@@ -178,7 +178,10 @@ ul {
   display: table;
 }
 
-/* line 5, ../src/stylesheets/_scrollbar.scss */
+/* @group variables */
+/* @end */
+/* @group track */
+/* line 17, ../src/stylesheets/_scrollbar.scss */
 .dmp-scrolltrack {
   border-radius: 8px;
   position: absolute;
@@ -189,25 +192,25 @@ ul {
   transition: background 200ms;
   z-index: 10;
 }
-/* line 12, ../src/stylesheets/_scrollbar.scss */
+/* line 24, ../src/stylesheets/_scrollbar.scss */
 .dmp-scrolltrack:hover .dmp-scrollbar {
   opacity: 0.5;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" 50 ")";
   filter: alpha(opacity=50);
   zoom: 1;
 }
-/* line 17, ../src/stylesheets/_scrollbar.scss */
+/* line 29, ../src/stylesheets/_scrollbar.scss */
 .dmp-scrollbar--none .dmp-scrolltrack {
   display: none;
 }
-/* line 21, ../src/stylesheets/_scrollbar.scss */
+/* line 33, ../src/stylesheets/_scrollbar.scss */
 .dmp-scrollbar--x .dmp-scrolltrack {
   bottom: 4px;
   height: 8px;
   left: 4px;
   right: 4px;
 }
-/* line 28, ../src/stylesheets/_scrollbar.scss */
+/* line 40, ../src/stylesheets/_scrollbar.scss */
 .dmp-scrollbar--y .dmp-scrolltrack {
   bottom: 4px;
   right: 4px;
@@ -215,10 +218,16 @@ ul {
   width: 8px;
 }
 
-/* line 36, ../src/stylesheets/_scrollbar.scss */
+/* @end */
+/* @group scrollbar */
+/* line 53, ../src/stylesheets/_scrollbar.scss */
 .dmp-scrollbar {
   background-color: #f2f0e6;
   border-radius: 8px;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" 0 ")";
+  filter: alpha(opacity=0);
+  zoom: 1;
   position: absolute;
   -webkit-transition: opacity 200ms 50ms;
   -moz-transition: opacity 200ms 50ms;
@@ -226,43 +235,44 @@ ul {
   -o-transition: opacity 200ms 50ms;
   transition: opacity 200ms 50ms;
 }
-/* line 43, ../src/stylesheets/_scrollbar.scss */
+/* line 60, ../src/stylesheets/_scrollbar.scss */
 .dmp-scrollbar:after {
   content: '';
   display: block;
   position: absolute;
 }
-/* line 48, ../src/stylesheets/_scrollbar.scss */
+/* line 65, ../src/stylesheets/_scrollbar.scss */
 .dmp-scrollbar--x .dmp-scrollbar:after {
   bottom: -6px;
   left: 0;
   right: 0;
   top: -6px;
 }
-/* line 55, ../src/stylesheets/_scrollbar.scss */
+/* line 72, ../src/stylesheets/_scrollbar.scss */
 .dmp-scrollbar--y .dmp-scrollbar:after {
   bottom: 0;
   left: -6px;
   right: -6px;
   top: 0;
 }
-/* line 63, ../src/stylesheets/_scrollbar.scss */
+/* line 80, ../src/stylesheets/_scrollbar.scss */
 .dmp-scrollbar--x .dmp-scrollbar {
   height: 8px;
 }
-/* line 67, ../src/stylesheets/_scrollbar.scss */
+/* line 84, ../src/stylesheets/_scrollbar.scss */
 .dmp-scrollbar--y .dmp-scrollbar {
   width: 8px;
 }
-/* line 71, ../src/stylesheets/_scrollbar.scss */
+/* line 88, ../src/stylesheets/_scrollbar.scss */
 .dmp--scrolling .dmp-scrollbar {
-  opacity: 0.5;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" 50 ")";
-  filter: alpha(opacity=50);
+  opacity: 1;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" 100 ")";
+  filter: alpha(opacity=100);
   zoom: 1;
   cursor: pointer;
 }
 
+/* @end */
 /* @group big container */
 /* line 11, ../src/stylesheets/app.scss */
 .site__content__wrapper {
