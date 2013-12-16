@@ -1,4 +1,4 @@
 jScrollbar
 ==========
 
-An accessible scrollbar replacement 
+An accessible scrollbar replacement.
