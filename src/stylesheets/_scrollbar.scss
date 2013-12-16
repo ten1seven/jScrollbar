@@ -1,12 +1,6 @@
 $scrollbar--overflow: 30px;
 $scrollbar--width: 8px;
 
-html {
-	&.dmp--scrolling,
-	&.dmp--scrolling * {
-		@include user-select(none);
-	}
-}
 
 .dmp-scrolltrack {
 	border-radius: $scrollbar--width;

@@ -66,9 +66,6 @@ Scrollbar.prototype = {
 
 	/** variables */
 
-	// dom vars
-	htmlElm: document.getElementsByTagName('html')[0],
-
 	// static vars
 	classScrollbar: 'dmp-scrollbar',
 	classScrolling: 'dmp--scrolling',
@@ -178,8 +175,8 @@ Scrollbar.prototype = {
 
 	startScroll: function(event) {
 		this.dragging = window.dmpDragging = true;
-		dmp.util.ieDisableSelect(false);
-		dmp.util.addClass(this.htmlElm, this.classScrolling);
+		dmp.util.disableSelect(false);
+		dmp.util.addClass(this.wrapper, this.classScrolling);
 
 		this.cursorOffset = this.calcCursorOffset(event);
 	},
@@ -209,8 +206,8 @@ Scrollbar.prototype = {
 
 	stopScroll: function() {
 		this.dragging = window.dmpDragging = false;
-		dmp.util.ieDisableSelect(true);
-		dmp.util.removeClass(this.htmlElm, this.classScrolling);
+		dmp.util.disableSelect(true);
+		dmp.util.removeClass(this.wrapper, this.classScrolling);
 	},
 
 

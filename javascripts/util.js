@@ -48,7 +48,7 @@ dmp.util = {
 		return val.slice(0, val.length - 2);
 	},
 
-	ieDisableSelect: function(trueFalse) {
+	disableSelect: function(trueFalse) {
 		document.onselectstart = function() {
 			return trueFalse;
 		}
