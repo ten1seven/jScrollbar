@@ -1,0 +1,24 @@
+@mixin font-rem($size, $base: 16) {
+	font-size: ($size + 0rem) / $base;
+
+	.no-cssremunit & {
+		font-size: $size * 1px;
+	}
+}
+
+@mixin opacity ( $value: 0.5 ) {
+	opacity: $value;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" $value * 100 ")";
+	filter: alpha(opacity= $value * 100);
+	zoom: 1;
+}
+
+@mixin user-select($user-select) {
+	// none | text | all | element
+	-webkit-touch-callout: $user-select;
+	  -webkit-user-select: $user-select;
+	   -khtml-user-select: $user-select;
+		  -moz-user-select: $user-select;
+		   -ms-user-select: $user-select;
+			    user-select: $user-select;
+}

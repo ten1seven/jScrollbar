@@ -1,0 +1,80 @@
+%heading {
+	font-family: 'PT Serif', serif;
+	margin-bottom: 0.5em;
+}
+
+* {
+	@include box-sizing(border-box);
+}
+
+a {
+	border-bottom: 1px solid rgba(#20c, 0.2);
+	color: #20c;
+	padding-bottom: 2px;
+	text-decoration: none;
+	@include transition(border 200ms);
+
+	&:focus,
+	&:hover {
+		border-bottom-color: rgba(#20c, 0.8);
+	}
+}
+
+blockquote {
+	@include font-rem(20);
+	font-style: italic;
+	margin: 2em;
+	padding: 0 0 0 2em;
+	position: relative;
+
+	&:before {
+		background-color: #444;
+		bottom: 0;
+		content: '';
+		display: block;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 3px;
+	}
+}
+
+body {
+	background: #fff;
+}
+
+h1 {
+	@extend %heading;
+	@include font-rem(32);
+}
+
+h2 {
+	@extend %heading;
+	@include font-rem(26);
+}
+
+h3 {
+	@extend %heading;
+	@include font-rem(20);
+}
+
+main {
+	display: block;
+}
+
+p {
+	margin: 0 0 1.5em;
+}
+
+ol,
+ul {
+	margin: 0 0 1.5em 2em;
+}
+
+ol {
+	list-style: decimal;
+}
+
+ul {
+	list-style: disc;
+}
