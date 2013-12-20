@@ -95,6 +95,7 @@ Scrollbar.prototype = {
 
 	size: function() {
 		this.measure();
+		this.calculate();
 		this.setScrollbarStyle(this.opts['dimension'], this.scrollbarDimension);
 		this.setPosition();
 	},
@@ -116,9 +117,6 @@ Scrollbar.prototype = {
 		this.mainDimension = (this.opts.direction === 'y') ? height : width;
 		this.mainScrollDimension = (this.opts.direction === 'y') ? scrollHeight : scrollWidth;
 		this.trackDimension = (this.opts.direction === 'y') ? this.track.clientHeight : this.track.clientWidth;
-
-		// calculate additional measurements
-		this.calculate();
 	},
 
 	setOpts: function(height, scrollHeight, width, scrollWidth) {
