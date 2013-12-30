@@ -1,7 +1,7 @@
 /**
  * Scrollbar replacement script
  * Author: Jeremy Fields, Viget
- * Requires: bean.js (https://github.com/fat/bean)
+ * Third-party Dependencies: bean.js (https://github.com/fat/bean)
  */
 
 
@@ -67,6 +67,7 @@ Scrollbar.prototype = {
 	/** variables */
 
 	// static vars
+	classHover: 'dmp--hover',
 	classScrollbar: 'dmp-scrollbar',
 	classScrolling: 'dmp--scrolling',
 	classScrolltrack: 'dmp-scrolltrack',
@@ -161,6 +162,15 @@ Scrollbar.prototype = {
 
 		// cache `this` so the context doesn't get lost within the event bindings
 		var _this = this;
+
+		bean.on(this.wrapper, {
+			'mouseenter.scroller': function(event) {
+				dmp.util.addClass(_this.scrollbar, _this.classHover);
+			},
+			'mouseleave.scroller': function(event) {
+				dmp.util.removeClass(_this.scrollbar, _this.classHover);
+			}
+		});
 
 		bean.on(this.scrollbar, 'mousedown.scroller', function(event) {
 			_this.startScroll(event)
