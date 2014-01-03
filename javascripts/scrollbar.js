@@ -9,13 +9,19 @@
 
 dmp.scrollbars = {
 	collection: [],
+	timer: null,
 
 	add: function(wrapper, scroller) {
-		dmp.scrollbars.collection.push(new Scrollbar(wrapper, scroller));
+		this.collection.push(new Scrollbar(wrapper, scroller));
 	},
 
 	size: function() {
-		dmp.scrollbars.loopCollection('size');
+		window.clearTimeout(this.timer);
+
+		// throttle resize function call
+		this.timer = window.setTimeout(function() {
+			dmp.scrollbars.loopCollection('size');
+		}, 500);
 	},
 
 	stopScroll: function() {
@@ -31,7 +37,7 @@ dmp.scrollbars = {
 	},
 
 	loopCollection: function(callback, event) {
-		var collection = dmp.scrollbars.collection;
+		var collection = this.collection;
 
 		for (var i = 0; i < collection.length; i++) {
 			collection[i][callback](event);
@@ -86,6 +92,10 @@ Scrollbar.prototype = {
 		this.size();
 	},
 
+	destroy: function() {
+		this.track.parentNode.removeChild(this.track);
+	},
+
 	render: function() {
 		this.track = dmp.util.makeElement('div', { 'class': this.classScrolltrack });
 		this.scrollbar = dmp.util.makeElement('div', { 'class': this.classScrollbar });
@@ -137,6 +147,10 @@ Scrollbar.prototype = {
 			dmp.util.addClass(this.wrapper, newClass);
 		} else if (this.currentClass !== newClass) {
 			dmp.util.swapClass(this.wrapper, this.currentClass, newClass);
+
+			this.destroy();
+			this.setup();
+			this.bindScrollbar();
 		}
 
 		this.currentClass = newClass;
@@ -172,8 +186,16 @@ Scrollbar.prototype = {
 			}
 		});
 
+		this.bindScrollbar();
+	},
+
+	bindScrollbar: function() {
+
+		// cache `this` so the context doesn't get lost within the event bindings
+		var _this = this;
+
 		bean.on(this.scrollbar, 'mousedown.scroller', function(event) {
-			_this.startScroll(event)
+			_this.startScroll(event);
 		});
 
 		bean.on(this.scroller, 'scroll.scroller', function() {
